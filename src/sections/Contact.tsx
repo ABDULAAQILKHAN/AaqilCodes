@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react";
 
 export default function Contact() {
     const container = useRef<HTMLDivElement>(null);
@@ -54,23 +54,23 @@ export default function Contact() {
                     </div>
 
                     <div className="contact-elem flex flex-col gap-4 mt-4">
-                        <a href="mailto:hello@example.com" className="flex items-center gap-4 text-gray-300 hover:text-white group w-fit transition-colors">
+                        <a href="mailto:aaqilkhan.work@gmail.com" className="flex items-center gap-4 text-gray-300 hover:text-white group w-fit transition-colors">
                             <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
                                 <Mail className="w-5 h-5" />
                             </div>
-                            <span className="text-xl tracking-wide">hello@example.com</span>
+                            <span className="text-xl tracking-wide">aaqilkhan.work@gmail.com</span>
                         </a>
                     </div>
 
                     <div className="contact-elem flex gap-6 mt-8">
-                        <a href="#" className="text-gray-500 hover:text-white transition-colors">
+                        <a href="https://github.com/ABDULAAQILKHAN" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
                             <Github className="w-6 h-6" />
                         </a>
-                        <a href="#" className="text-gray-500 hover:text-white transition-colors">
+                        <a href="https://www.linkedin.com/in/aaqil-khan-b45135170" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors">
                             <Linkedin className="w-6 h-6" />
                         </a>
-                        <a href="#" className="text-gray-500 hover:text-white transition-colors">
-                            <Twitter className="w-6 h-6" />
+                        <a href="tel:+918989680289" className="text-gray-500 hover:text-white transition-colors">
+                            <Phone className="w-6 h-6" />
                         </a>
                     </div>
                 </div>

@@ -7,24 +7,17 @@ import { useGSAP } from "@gsap/react";
 const EXPERIENCES = [
     {
         id: 1,
-        role: "Senior Frontend Engineer",
-        company: "Acme Corp",
-        period: "2024 - Present",
-        description: "Leading the development of a next-generation web platform using Next.js and React Three Fiber. Mentoring junior developers and establishing technical standards."
+        role: "Software Development Engineer",
+        company: "Techdome Solutions Pvt. Ltd",
+        period: "May 2024 - Present",
+        description: "Engineered modular frontend architectures and optimized backend performance, reducing latency by 25%. Architected an AI-powered recruitment tool and hardened infrastructure security."
     },
     {
         id: 2,
-        role: "Software Engineer",
-        company: "Global Tech",
-        period: "2021 - 2024",
-        description: "Developed and maintained highly scalable e-commerce micro-frontends serving millions of users globally. Improved core web vitals by 40%."
-    },
-    {
-        id: 3,
-        role: "UI/UX Developer",
-        company: "Creative Agency",
-        period: "2019 - 2021",
-        description: "Bridged the gap between design and engineering. Created award-winning interactive marketing sites using advanced GSAP animations and WebGL."
+        role: "Full-Stack Developer Intern",
+        company: "Blaccskull Platforms Pvt. Ltd",
+        period: "March 2023 - Feb 2024",
+        description: "Developed a high-performance user search engine and led real-time multimedia feature development. Enhanced runtime performance by 50% and mentored junior developers."
     }
 ];
 

@@ -9,31 +9,35 @@ import { ArrowUpRight } from "lucide-react";
 const PROJECTS = [
     {
         id: 1,
-        title: "E-Commerce Reimagined",
-        category: "Full Stack Development",
-        description: "A high-performance headless commerce storefront.",
+        title: "Zayka-Darbar",
+        category: "Next.js, Supabase, NestJS",
+        description: "Multi-role food ordering platform with real-time tracking.",
         image: "bg-neutral-800",
+        link: "https://zaykadarbar.vercel.app/"
     },
     {
         id: 2,
-        title: "Fintech Dashboard",
-        category: "UI Engineering",
-        description: "Complex data visualization and real-time analytics.",
+        title: "MyCerts",
+        category: "Next.js, NestJS, PostgreSQL",
+        description: "Secure digital credential hub for verifiable certificates.",
         image: "bg-neutral-800",
+        link: "https://mycerts99.vercel.app/"
     },
     {
         id: 3,
-        title: "AI Writing Assistant",
-        category: "Product Design",
-        description: "An AI-powered editor for technical writers.",
+        title: "MyResumeAI",
+        category: "React, Tailwind, Gemini AI",
+        description: "Intelligent resume builder powered by AI.",
         image: "bg-neutral-800",
+        link: "https://myresumeai.vercel.app/"
     },
     {
         id: 4,
-        title: "Web3 NFT Platform",
-        category: "Frontend & Web3",
-        description: "Decentralized marketplace with smart contract integration.",
+        title: "Stepper.ai",
+        category: "Next.js, FastAPI, Supabase",
+        description: "AI chatbot to debug code step by step.",
         image: "bg-neutral-800",
+        link: "https://stepperai.vercel.app/"
     },
 ];
 
@@ -87,9 +91,12 @@ export default function Projects() {
                 {/* Horizontal scrolling container */}
                 <div className="flex gap-8 px-6 md:px-32 h-[60vh] md:h-[70vh]">
                     {PROJECTS.map((project, i) => (
-                        <div
+                        <a
                             key={project.id}
-                            className="project-card flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-full flex flex-col group cursor-pointer"
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-card flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-full flex flex-col group cursor-pointer block"
                         >
                             <div className={`relative w-full h-full ${project.image} rounded-xl overflow-hidden mb-6`}>
                                 <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -114,7 +121,7 @@ export default function Projects() {
                                     <ArrowUpRight className="w-5 h-5" />
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     ))}
                 </div>
             </div>

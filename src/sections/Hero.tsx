@@ -52,17 +52,17 @@ export default function Hero() {
             <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center pointer-events-none">
                 <div className="overflow-hidden mb-2">
                     <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase leading-[0.9]">
-                        Creative
+                        Aaqil
                     </h1>
                 </div>
                 <div className="overflow-hidden mb-6">
                     <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase text-transparent w-full leading-[0.9]" style={{ WebkitTextStroke: "2px white" }}>
-                        Technologist
+                        Khan
                     </h1>
                 </div>
 
                 <p className="hero-subtitle text-lg md:text-2xl text-gray-400 max-w-xl mx-auto font-light tracking-wide pointer-events-auto">
-                    Crafting immersive digital experiences through code and design.
+                    Full Stack Engineer specializing in scalable web applications and AI-driven workflows.
                 </p>
             </div>
 

@@ -5,10 +5,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const SKILLS = [
-    "TypeScript", "React", "Next.js", "Node.js", "GraphQL",
-    "Tailwind CSS", "GSAP", "Three.js", "Framer Motion",
-    "PostgreSQL", "MongoDB", "Redis", "Docker", "AWS",
-    "Figma", "Web Performance", "Accessibility", "SEO"
+    "React.js", "Next.js", "TypeScript", "Tailwind CSS", "FastAPI",
+    "PostgreSQL", "Redux Toolkit", "NestJS", "Node.js", "Docker",
+    "MongoDB", "OpenAI API", "Git/GitHub Actions", "Nginx", "Linux",
+    "System Design", "Microservices", "CI/CD"
 ];
 
 export default function Skills() {
