@@ -9,36 +9,44 @@ import { ArrowUpRight } from "lucide-react";
 const PROJECTS = [
     {
         id: 1,
-        title: "Zayka-Darbar",
-        category: "Next.js, Supabase, NestJS",
-        description: "Multi-role food ordering platform with real-time tracking.",
-        image: "bg-neutral-800",
-        link: "https://zaykadarbar.vercel.app/"
+        title: "Solutions with Aaqil",
+        category: "Next.js, Tailwind, Framer motion, Email.js",
+        description: "My personal B2B portfolio with Auth control of my own projects.",
+        image: "sol.png",
+        link: "https://solutions-with-aaqil.vercel.app/"
     },
     {
         id: 2,
-        title: "MyCerts",
-        category: "Next.js, NestJS, PostgreSQL",
-        description: "Secure digital credential hub for verifiable certificates.",
-        image: "bg-neutral-800",
-        link: "https://mycerts99.vercel.app/"
+        title: "Zayka-Darbar",
+        category: "Next.js, Supabase, NestJS",
+        description: "Multi-role food ordering platform with real-time tracking.",
+        image: "zayka.png",
+        link: "https://zaykadarbar.vercel.app/"
     },
     {
         id: 3,
-        title: "MyResumeAI",
-        category: "React, Tailwind, Gemini AI",
-        description: "Intelligent resume builder powered by AI.",
-        image: "bg-neutral-800",
-        link: "https://myresumeai.vercel.app/"
+        title: "MyCerts",
+        category: "Next.js, NestJS, PostgreSQL",
+        description: "Secure digital credential hub for verifiable certificates.",
+        image: "certshare.png",
+        link: "https://mycerts99.vercel.app/"
     },
     {
         id: 4,
         title: "Stepper.ai",
         category: "Next.js, FastAPI, Supabase",
         description: "AI chatbot to debug code step by step.",
-        image: "bg-neutral-800",
+        image: "stepperai.png",
         link: "https://stepperai.vercel.app/"
     },
+    // {
+    //     id: 3,
+    //     title: "MyResumeAI",
+    //     category: "React, Tailwind, Gemini AI",
+    //     description: "Intelligent resume builder powered by AI.",
+    //     image: "bg-neutral-800",
+    //     link: "https://myresumeai.vercel.app/"
+    // },
 ];
 
 export default function Projects() {
@@ -98,12 +106,17 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             className="project-card flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-full flex flex-col group cursor-pointer block"
                         >
-                            <div className={`relative w-full h-full ${project.image} rounded-xl overflow-hidden mb-6`}>
-                                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                {/* Abstract image placeholder */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:scale-105 transition-transform duration-700 ease-out text-white">
-                                    <span className="text-9xl font-bold tracking-tighter">0{i + 1}</span>
-                                </div>
+                            <div className="relative w-full h-full bg-neutral-900 rounded-xl overflow-hidden mb-6">
+                                {project.image && !project.image.startsWith('bg-') ? (
+                                    <img
+                                        src={`/${project.image}`}
+                                        alt={project.title}
+                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    />
+                                ) : (
+                                    <div className={`absolute inset-0 w-full h-full ${project.image || 'bg-neutral-800'}`} />
+                                )}
+                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                             </div>
 
                             <div className="flex items-start justify-between">

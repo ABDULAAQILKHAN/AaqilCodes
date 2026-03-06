@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Background3D from "@/components/Background3D";
 import Hero from "@/sections/Hero";
 import About from "@/sections/About";
 import Projects from "@/sections/Projects";
@@ -10,6 +11,7 @@ import ClientSetup from "@/components/ClientSetup";
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black">
+      <Background3D />
       <ClientSetup />
       <Header />
       <Hero />

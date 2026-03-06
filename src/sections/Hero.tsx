@@ -51,12 +51,12 @@ export default function Hero() {
             {/* Content */}
             <div className="container relative z-10 mx-auto px-6 md:px-12 flex flex-col items-center justify-center text-center pointer-events-none">
                 <div className="overflow-hidden mb-2">
-                    <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase leading-[0.9]">
+                    <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase leading-[0.9] text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
                         Aaqil
                     </h1>
                 </div>
                 <div className="overflow-hidden mb-6">
-                    <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase text-transparent w-full leading-[0.9]" style={{ WebkitTextStroke: "2px white" }}>
+                    <h1 className="hero-text text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 leading-[0.9] pb-2">
                         Khan
                     </h1>
                 </div>

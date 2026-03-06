@@ -18,6 +18,13 @@ const EXPERIENCES = [
         company: "Blaccskull Platforms Pvt. Ltd",
         period: "March 2023 - Feb 2024",
         description: "Developed a high-performance user search engine and led real-time multimedia feature development. Enhanced runtime performance by 50% and mentored junior developers."
+    },
+    {
+        id: 3,
+        role: "Full-stack Developer",
+        company: "Royal IT Service",
+        period: "May 2021 - Feb 2023",
+        description: "During my part-time role at Royal IT Service, I worked as a Full Stack Developer using React, Node.js, and PostgreSQL to build responsive interfaces and integrate scalable APIs. I improved frontend performance, maintained code quality through Git workflows, and contributed to data-driven web applications within an Agile environment. I also debugged and enhanced existing modules, strengthening my transition from bug fixing to mentoring while applying skills developed through projects like Stepper.ai and MyResumeAI."
     }
 ];
 
@@ -66,10 +73,10 @@ export default function Experience() {
     );
 
     return (
-        <section ref={container} id="experience" className="relative py-24 md:py-32 w-full bg-black overflow-hidden">
+        <section ref={container} id="experience" className="relative py-24 md:py-32 w-full bg-transparent overflow-hidden">
             <div className="container mx-auto px-6 md:px-12">
-                <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-24">
-                    Professional <span className="text-gray-500">Journey</span>
+                <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-center mb-24 text-white drop-shadow-md">
+                    Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Journey</span>
                 </h2>
 
                 <div className="relative max-w-4xl mx-auto">
