@@ -36,7 +36,7 @@ function StarBackground() {
 export default function Background3D() {
     return (
         <div className="fixed inset-0 -z-10 w-full h-full pointer-events-none">
-            <Canvas camera={{ position: [0, 0, 1] }}>
+            <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]} performance={{ min: 0.5 }}>
                 <StarBackground />
                 <Preload all />
             </Canvas>
