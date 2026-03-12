@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Tooltip from "@/components/Tooltip";
 
 function InteractiveImage() {
     const cardRef = useRef<HTMLDivElement>(null);
@@ -49,7 +50,11 @@ function InteractiveImage() {
             />
 
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="text-2xl font-bold tracking-tight text-white">Let's build something.</p>
+                <p className="text-2xl font-bold tracking-tight text-white cursor-help">
+                    <Tooltip content="Software engineering & Design">
+                        <span>Let's build something.</span>
+                    </Tooltip>
+                </p>
             </div>
         </div>
     );
@@ -102,9 +107,15 @@ export default function About() {
                     <h2 className="about-text text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md will-change-transform">
                         Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">scalable</span> web applications.
                     </h2>
+<<<<<<< HEAD
                     <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text will-change-transform" />
                     <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed will-change-transform">
                         I am a Results-oriented Full Stack Engineer with expertise in React, Next.js, and FastAPI. I specialize in optimizing system performance, reducing latency, and integrating AI-driven workflows to automate business processes.
+=======
+                    <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text" />
+                    <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                        I am a Results-oriented Full Stack Engineer with expertise in <Tooltip content="Frontend Architecture">React</Tooltip>, <Tooltip content="Server-side Rendering">Next.js</Tooltip>, and <Tooltip content="Python Backend API">FastAPI</Tooltip>. I specialize in optimizing system performance, reducing latency, and integrating AI-driven workflows to automate business processes.
+>>>>>>> ab04690fd9af39e5e13553351ccad02ee2255d76
                     </p>
                     <p className="about-text text-lg md:text-xl text-gray-400 font-light leading-relaxed will-change-transform">
                         With a strong foundation in modern engineering principles, I excel at developing modular architectures, ensuring robust infrastructure security, and delivering production-ready, feature-rich solutions.

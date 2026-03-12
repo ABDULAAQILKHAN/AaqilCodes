@@ -1,15 +1,20 @@
-"use client";
-
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+<<<<<<< HEAD
 import AnimatedBackground from "@/components/AnimatedBackground";
+=======
+import Scene from "@/components/Scene";
+import Tooltip from "@/components/Tooltip";
+>>>>>>> ab04690fd9af39e5e13553351ccad02ee2255d76
 
-export default function Hero() {
+export default function Hero({ isLoaded }: { isLoaded?: boolean }) {
     const container = useRef<HTMLDivElement>(null);
 
     useGSAP(
         () => {
+            if (!isLoaded) return;
+
             const tl = gsap.timeline({ defaults: { ease: "power4.out", duration: 1.5 } });
 
             tl.from(".hero-text", {
@@ -38,7 +43,7 @@ export default function Hero() {
                     "-=1.5"
                 );
         },
-        { scope: container }
+        { scope: container, dependencies: [isLoaded] }
     );
 
     return (
@@ -61,9 +66,11 @@ export default function Hero() {
                     </h1>
                 </div>
 
-                <p className="hero-subtitle text-lg md:text-2xl text-gray-400 max-w-xl mx-auto font-light tracking-wide pointer-events-auto">
-                    Full Stack Engineer specializing in scalable web applications and AI-driven workflows.
-                </p>
+                <Tooltip content="Software Engineering Expert">
+                    <p className="hero-subtitle text-lg md:text-2xl text-gray-400 max-w-xl mx-auto font-light tracking-wide pointer-events-auto cursor-help">
+                        Full Stack Engineer specializing in scalable web applications and AI-driven workflows.
+                    </p>
+                </Tooltip>
             </div>
 
             {/* Scroll Indicator */}
