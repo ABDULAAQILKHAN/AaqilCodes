@@ -37,6 +37,9 @@ export default function Header() {
                     <Tooltip content="My professional history">
                         <Link href="#experience" className="text-sm text-gray-400 hover:text-white transition-colors">Experience</Link>
                     </Tooltip>
+                    <Tooltip content="Explore B2B">
+                        <Link target="_blank" rel="noopener noreferrer" href="https://solutions-with-aaqil.vercel.app/" className="text-sm text-black bg-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors">Solutions with Aaqil</Link>
+                    </Tooltip>
                     <Tooltip content="Send me a message">
                         <Link href="#contact" className="text-sm text-black bg-white px-4 py-2 rounded-full font-medium hover:bg-gray-200 transition-colors">Get in touch</Link>
                     </Tooltip>

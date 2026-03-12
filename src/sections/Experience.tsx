@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -10,23 +10,105 @@ const EXPERIENCES = [
         role: "Software Development Engineer",
         company: "Techdome Solutions Pvt. Ltd",
         period: "May 2024 - Present",
-        description: "Engineered modular frontend architectures and optimized backend performance, reducing latency by 25%. Architected an AI-powered recruitment tool and hardened infrastructure security."
+        description: "Engineered modular frontend architectures and optimized backend performance, reducing latency by 25%. Architected an AI-powered recruitment tool and hardened infrastructure security.",
+        highlights: ["Frontend Architecture", "25% Latency Reduction", "AI Integration"],
+        color: "from-blue-500 to-cyan-500"
     },
     {
         id: 2,
         role: "Full-Stack Developer Intern",
         company: "Blaccskull Platforms Pvt. Ltd",
         period: "March 2023 - Feb 2024",
-        description: "Developed a high-performance user search engine and led real-time multimedia feature development. Enhanced runtime performance by 50% and mentored junior developers."
+        description: "Developed a high-performance user search engine and led real-time multimedia feature development. Enhanced runtime performance by 50% and mentored junior developers.",
+        highlights: ["Search Engine", "50% Performance Boost", "Mentorship"],
+        color: "from-purple-500 to-pink-500"
     },
     {
         id: 3,
         role: "Full-stack Developer",
         company: "Royal IT Service",
         period: "May 2021 - Feb 2023",
-        description: "During my part-time role at Royal IT Service, I worked as a Full Stack Developer using React, Node.js, and PostgreSQL to build responsive interfaces and integrate scalable APIs. I improved frontend performance, maintained code quality through Git workflows, and contributed to data-driven web applications within an Agile environment. I also debugged and enhanced existing modules, strengthening my transition from bug fixing to mentoring while applying skills developed through projects like Stepper.ai and MyResumeAI."
+        description: "Built responsive interfaces using React, Node.js, and PostgreSQL. Improved frontend performance, maintained code quality through Git workflows, and contributed to data-driven web applications within an Agile environment.",
+        highlights: ["React", "PostgreSQL", "Agile"],
+        color: "from-emerald-500 to-teal-500"
     }
 ];
+
+// Interactive experience card with 3D tilt effect
+function ExperienceCard({ exp, index, isLeft }: { exp: typeof EXPERIENCES[0]; index: number; isLeft: boolean }) {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [transform, setTransform] = useState("perspective(1000px) rotateX(0deg) rotateY(0deg)");
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+
+        setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    };
+
+    const handleMouseLeave = () => {
+        setTransform("perspective(1000px) rotateX(0deg) rotateY(0deg)");
+        setIsHovered(false);
+    };
+
+    return (
+        <div className={`exp-node relative flex items-center mb-16 last:mb-0 ${isLeft ? "md:flex-row-reverse" : ""}`}>
+            {/* Timeline Dot with pulse effect */}
+            <div className="absolute left-[24px] md:left-1/2 -translate-x-1/2 z-10">
+                <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} shadow-[0_0_15px_rgba(255,255,255,0.5)]`}>
+                    {isHovered && (
+                        <div className={`absolute inset-0 w-4 h-4 rounded-full bg-gradient-to-r ${exp.color} animate-ping`} />
+                    )}
+                </div>
+            </div>
+
+            <div className={`ml-16 md:ml-0 md:w-1/2 ${isLeft ? "md:pl-16" : "md:pr-16 text-left md:text-right"}`}>
+                <div
+                    ref={cardRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ transform, transition: "transform 0.1s ease-out" }}
+                    className={`p-6 md:p-8 bg-neutral-900/50 backdrop-blur-sm border border-white/5 rounded-2xl transition-all duration-300 cursor-pointer group ${
+                        isHovered ? "bg-neutral-900 border-white/20 shadow-2xl" : ""
+                    }`}
+                >
+                    {/* Gradient accent line */}
+                    <div className={`absolute top-0 ${isLeft ? "left-0" : "right-0"} w-1 h-full bg-gradient-to-b ${exp.color} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                    
+                    <span className="text-sm font-bold tracking-widest text-[#a8a8a8] uppercase block mb-2">{exp.period}</span>
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-300">
+                        {exp.role}
+                    </h3>
+                    <h4 className="text-lg md:text-xl text-gray-400 mb-4">{exp.company}</h4>
+                    <p className="text-gray-400 font-light leading-relaxed mb-4">
+                        {exp.description}
+                    </p>
+                    
+                    {/* Highlight tags */}
+                    <div className={`flex flex-wrap gap-2 ${isLeft ? "" : "md:justify-end"}`}>
+                        {exp.highlights.map((highlight, i) => (
+                            <span 
+                                key={i}
+                                className={`px-3 py-1 text-xs rounded-full bg-gradient-to-r ${exp.color} text-white opacity-70 group-hover:opacity-100 transition-opacity duration-300`}
+                            >
+                                {highlight}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 export default function Experience() {
     const container = useRef<HTMLDivElement>(null);
@@ -80,30 +162,14 @@ export default function Experience() {
                 </h2>
 
                 <div className="relative max-w-4xl mx-auto">
-                    {/* Vertical Line */}
+                    {/* Vertical Line with gradient */}
                     <div
                         ref={lineRef}
-                        className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/20 -translate-x-1/2"
+                        className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 -translate-x-1/2"
                     />
 
                     {EXPERIENCES.map((exp, i) => (
-                        <div key={exp.id} className={`exp-node relative flex items-center mb-16 last:mb-0 ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
-
-                            {/* Timeline Dot */}
-                            <div className="absolute left-[24px] md:left-1/2 w-4 h-4 bg-white rounded-full -translate-x-1/2 shadow-[0_0_15px_rgba(255,255,255,0.5)] z-10" />
-
-                            <div className={`ml-16 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pl-16" : "md:pr-16 text-left md:text-right"}`}>
-                                <div className="p-6 md:p-8 bg-neutral-900/50 backdrop-blur-sm border border-white/5 rounded-2xl hover:bg-neutral-900 transition-colors duration-300">
-                                    <span className="text-sm font-bold tracking-widest text-[#a8a8a8] uppercase block mb-2">{exp.period}</span>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">{exp.role}</h3>
-                                    <h4 className="text-lg md:text-xl text-gray-400 mb-4">{exp.company}</h4>
-                                    <p className="text-gray-400 font-light leading-relaxed">
-                                        {exp.description}
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
+                        <ExperienceCard key={exp.id} exp={exp} index={i} isLeft={i % 2 === 0} />
                     ))}
                 </div>
             </div>

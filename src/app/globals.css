@@ -92,6 +92,71 @@
   animation: float 10s ease-in-out infinite;
 }
 
+/* Scroll indicator animation */
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicator 1.5s ease-in-out infinite;
+}
+
+/* Depth scroll section styles */
+.depth-section {
+  min-height: 100vh;
+  width: 100%;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.depth-section:not(.normal-scroll) {
+  position: relative;
+}
+
+/* Smooth transitions for depth effect */
+.depth-scroll-container .depth-section {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Text gradient animation */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
 :root {
   --background: #000000;
   --foreground: #ffffff;
