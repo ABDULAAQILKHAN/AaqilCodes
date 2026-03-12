@@ -107,15 +107,9 @@ export default function About() {
                     <h2 className="about-text text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md will-change-transform">
                         Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">scalable</span> web applications.
                     </h2>
-<<<<<<< HEAD
-                    <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text will-change-transform" />
-                    <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed will-change-transform">
-                        I am a Results-oriented Full Stack Engineer with expertise in React, Next.js, and FastAPI. I specialize in optimizing system performance, reducing latency, and integrating AI-driven workflows to automate business processes.
-=======
                     <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text" />
                     <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed">
                         I am a Results-oriented Full Stack Engineer with expertise in <Tooltip content="Frontend Architecture">React</Tooltip>, <Tooltip content="Server-side Rendering">Next.js</Tooltip>, and <Tooltip content="Python Backend API">FastAPI</Tooltip>. I specialize in optimizing system performance, reducing latency, and integrating AI-driven workflows to automate business processes.
->>>>>>> ab04690fd9af39e5e13553351ccad02ee2255d76
                     </p>
                     <p className="about-text text-lg md:text-xl text-gray-400 font-light leading-relaxed will-change-transform">
                         With a strong foundation in modern engineering principles, I excel at developing modular architectures, ensuring robust infrastructure security, and delivering production-ready, feature-rich solutions.

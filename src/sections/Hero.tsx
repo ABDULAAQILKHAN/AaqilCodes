@@ -1,13 +1,8 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-<<<<<<< HEAD
 import AnimatedBackground from "@/components/AnimatedBackground";
-=======
-import Scene from "@/components/Scene";
 import Tooltip from "@/components/Tooltip";
->>>>>>> ab04690fd9af39e5e13553351ccad02ee2255d76
-
 export default function Hero({ isLoaded }: { isLoaded?: boolean }) {
     const container = useRef<HTMLDivElement>(null);
 
