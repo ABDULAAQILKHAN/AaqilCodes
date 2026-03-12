@@ -97,7 +97,7 @@ export default function Projects() {
             {/* Pinning wrapper */}
             <div ref={scrollWrapper} className="h-screen flex items-center">
                 {/* Horizontal scrolling container */}
-                <div className="flex gap-8 px-6 md:px-32 h-[60vh] md:h-[70vh]">
+                <div className="flex gap-8 px-6 md:px-32 h-[60vh] md:h-[70vh] will-change-transform">
                     {PROJECTS.map((project, i) => (
                         <a
                             key={project.id}

@@ -99,14 +99,14 @@ export default function About() {
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Text Column */}
                 <div className="flex flex-col gap-8 order-2 lg:order-1">
-                    <h2 className="about-text text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md">
+                    <h2 className="about-text text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md will-change-transform">
                         Architecting <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">scalable</span> web applications.
                     </h2>
-                    <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text" />
-                    <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                    <div className="h-[1px] w-1/4 bg-gradient-to-r from-purple-500 to-transparent about-text will-change-transform" />
+                    <p className="about-text text-lg md:text-xl text-gray-300 font-light leading-relaxed will-change-transform">
                         I am a Results-oriented Full Stack Engineer with expertise in React, Next.js, and FastAPI. I specialize in optimizing system performance, reducing latency, and integrating AI-driven workflows to automate business processes.
                     </p>
-                    <p className="about-text text-lg md:text-xl text-gray-400 font-light leading-relaxed">
+                    <p className="about-text text-lg md:text-xl text-gray-400 font-light leading-relaxed will-change-transform">
                         With a strong foundation in modern engineering principles, I excel at developing modular architectures, ensuring robust infrastructure security, and delivering production-ready, feature-rich solutions.
                     </p>
                 </div>

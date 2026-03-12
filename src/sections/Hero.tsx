@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Scene from "@/components/Scene";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 export default function Hero() {
     const container = useRef<HTMLDivElement>(null);
@@ -43,9 +43,9 @@ export default function Hero() {
 
     return (
         <section ref={container} id="hero" className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-            {/* 3D Background */}
+            {/* Animated Background */}
             <div className="scene-container absolute inset-0 z-0">
-                <Scene />
+                <AnimatedBackground />
             </div>
 
             {/* Content */}

@@ -47,10 +47,10 @@ function MagneticTag({ children }: { children: React.ReactNode }) {
     }, []);
 
     return (
-        <div ref={containerRef} className="skill-tag-container p-2 relative touch-none">
+        <div ref={containerRef} className="skill-tag-container p-2 relative touch-none will-change-transform">
             <div
                 ref={tagRef}
-                className="skill-tag px-6 py-4 rounded-full bg-neutral-900 border border-white/5 text-gray-300 font-medium tracking-wide hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:border-transparent transition-colors duration-300 cursor-pointer shadow-lg z-10 relative"
+                className="skill-tag px-6 py-4 rounded-full bg-neutral-900 border border-white/5 text-gray-300 font-medium tracking-wide hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:border-transparent transition-colors duration-300 cursor-pointer shadow-lg z-10 relative will-change-transform"
             >
                 {children}
             </div>
