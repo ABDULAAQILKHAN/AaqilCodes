@@ -4,11 +4,13 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const PROJECTS = [
     {
         id: 1,
+        slug: "solutions-with-aaqil",
         title: "Solutions with Aaqil",
         category: "Next.js, Tailwind, Framer motion, Email.js",
         description: "My personal B2B portfolio with Auth control of my own projects.",
@@ -17,6 +19,7 @@ const PROJECTS = [
     },
     {
         id: 2,
+        slug: "zayka-darbar",
         title: "Zayka-Darbar",
         category: "Next.js, Supabase, NestJS",
         description: "Multi-role food ordering platform with real-time tracking.",
@@ -25,6 +28,7 @@ const PROJECTS = [
     },
     {
         id: 3,
+        slug: "mycerts",
         title: "MyCerts",
         category: "Next.js, NestJS, PostgreSQL",
         description: "Secure digital credential hub for verifiable certificates.",
@@ -33,20 +37,13 @@ const PROJECTS = [
     },
     {
         id: 4,
+        slug: "stepper-ai",
         title: "Stepper.ai",
         category: "Next.js, FastAPI, Supabase",
         description: "AI chatbot to debug code step by step.",
         image: "stepperai.png",
         link: "https://stepperai.vercel.app/"
     },
-    // {
-    //     id: 3,
-    //     title: "MyResumeAI",
-    //     category: "React, Tailwind, Gemini AI",
-    //     description: "Intelligent resume builder powered by AI.",
-    //     image: "bg-neutral-800",
-    //     link: "https://myresumeai.vercel.app/"
-    // },
 ];
 
 export default function Projects() {
@@ -99,19 +96,21 @@ export default function Projects() {
                 {/* Horizontal scrolling container */}
                 <div className="flex gap-8 px-6 md:px-32 h-[60vh] md:h-[70vh] will-change-transform">
                     {PROJECTS.map((project, i) => (
-                        <a
+                        <Link
                             key={project.id}
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href={`/projects/${project.slug}`}
                             className="project-card flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-full flex flex-col group cursor-pointer block"
                         >
                             <div className="relative w-full h-full bg-neutral-900 rounded-xl overflow-hidden mb-6">
                                 {project.image && !project.image.startsWith('bg-') ? (
-                                    <img
+                                    <Image
                                         src={`/${project.image}`}
-                                        alt={project.title}
-                                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                        alt={`${project.title} - ${project.description}`}
+                                        fill
+                                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                        sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 45vw"
+                                        loading={i === 0 ? "eager" : "lazy"}
+                                        priority={i === 0}
                                     />
                                 ) : (
                                     <div className={`absolute inset-0 w-full h-full ${project.image || 'bg-neutral-800'}`} />
@@ -134,7 +133,7 @@ export default function Projects() {
                                     <ArrowUpRight className="w-5 h-5" />
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

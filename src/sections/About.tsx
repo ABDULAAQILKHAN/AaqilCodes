@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
 
 function InteractiveImage() {
@@ -39,20 +40,19 @@ function InteractiveImage() {
             {/* Glassmorphism shine overlay */}
             <div className="absolute inset-0 z-10 bg-gradient-to-tr from-transparent via-white/5 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            <img
+            <Image
                 src="/profile.jpg"
-                alt="Aaqil Khan"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                onError={(e) => {
-                    // Fallback if public/profile.jpg doesn't exist yet
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop';
-                }}
+                alt="Aaqil Khan - Full Stack Developer specializing in React, Next.js, and Node.js"
+                fill
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 400px"
+                priority
             />
 
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                 <p className="text-2xl font-bold tracking-tight text-white cursor-help">
                     <Tooltip content="Software engineering & Design">
-                        <span>Let's build something.</span>
+                        <span>Let&apos;s build something.</span>
                     </Tooltip>
                 </p>
             </div>
@@ -100,7 +100,7 @@ export default function About() {
     );
 
     return (
-        <section ref={container} id="about" className="relative min-h-screen w-full flex items-center p-6 md:p-12 lg:p-24 bg-transparent">
+        <section ref={container} id="about" className="relative min-h-screen w-full flex flex-col items-center p-6 md:p-12 lg:p-24 bg-transparent">
             <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 {/* Text Column */}
                 <div className="flex flex-col gap-8 order-2 lg:order-1">
@@ -119,6 +119,20 @@ export default function About() {
                 {/* Image Column */}
                 <div className="order-1 lg:order-2 flex justify-center lg:justify-end perspective-1000">
                     <InteractiveImage />
+                </div>
+            </div>
+
+            {/* SEO Content Section - Keyword-rich description for search engines */}
+            <div className="container mx-auto mt-16 about-text">
+                <div className="max-w-4xl mx-auto text-center">
+                    <p className="text-base md:text-lg text-gray-500 font-light leading-relaxed">
+                        <strong className="text-gray-400">Aaqil Khan</strong> is a <strong className="text-gray-400">Full Stack Developer</strong> based in India, 
+                        specializing in <strong className="text-gray-400">React</strong>, <strong className="text-gray-400">Next.js</strong>, <strong className="text-gray-400">Node.js</strong>, <strong className="text-gray-400">PostgreSQL</strong>, 
+                        and building scalable <strong className="text-gray-400">SaaS applications</strong>. With expertise in modern web technologies including 
+                        TypeScript, NestJS, FastAPI, and cloud platforms, Aaqil delivers high-performance, production-ready solutions 
+                        for businesses worldwide. From real-time applications to AI-powered tools, discover how cutting-edge 
+                        development can transform your digital presence.
+                    </p>
                 </div>
             </div>
         </section>
