@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { PostHogProvider } from "@/components/PostHogProvider";
+import { PostHogPageView } from "@/components/PostHogPageView";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -103,9 +105,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${spaceGrotesk.variable} antialiased selection:bg-white selection:text-black`}>
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        <PostHogProvider>
+          <PostHogPageView />
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
+        </PostHogProvider>
       </body>
     </html>
   );
