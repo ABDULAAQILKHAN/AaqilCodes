@@ -12,7 +12,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   icons: {
-    icon: "https://solutions-with-aaqil.vercel.app/A%20logo.png",
+    //icon: "https://solutions-with-aaqil.vercel.app/A%20logo.png",
+    icon: "/aaqil_codes.png",
   },
   title: "Aaqil Khan – Full Stack Developer | React, Next.js, Node.js",
   description: "Portfolio of Aaqil Khan, a full-stack developer specializing in React, Next.js, Node.js, PostgreSQL and scalable SaaS applications.",
