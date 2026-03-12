@@ -9,7 +9,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  icons: 'https://solutions-with-aaqil.vercel.app/A%20logo.png',
+  icons: {
+    icon: "https://solutions-with-aaqil.vercel.app/A%20logo.png",
+  },
   title: "Aaqil Khan — Software Engineer",
   description: "Interactive personal portfolio showcasing projects and experience.",
 };
