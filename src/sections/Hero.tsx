@@ -22,55 +22,6 @@ function useIsMobile() {
 }
 
 // ────────────────────────────────────────────
-// Sub-components
-// ────────────────────────────────────────────
-
-/** Custom cursor dot that follows the mouse (desktop only) */
-function FloatingCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      gsap.to(cursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-    };
-
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-
-    window.addEventListener("mousemove", handleMouseMove);
-    document.body.addEventListener("mouseenter", handleMouseEnter);
-    document.body.addEventListener("mouseleave", handleMouseLeave);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.body.removeEventListener("mouseenter", handleMouseEnter);
-      document.body.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
-  return (
-    <div
-      ref={cursorRef}
-      className={`fixed pointer-events-none z-50 w-4 h-4 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 mix-blend-difference ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      <div className="w-full h-full rounded-full bg-white" />
-      <div className="absolute inset-0 w-full h-full rounded-full bg-white/30 animate-ping" />
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────
 // Main Hero
 // ────────────────────────────────────────────
 
@@ -207,9 +158,6 @@ export default function Hero({ isLoaded }: { isLoaded?: boolean }) {
       id="hero"
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      {/* ── Custom cursor (desktop) ── */}
-      {!isMobile && <FloatingCursor />}
-
       {/* ── Background video ── */}
       <div className="hero-video-wrap absolute inset-0 z-0">
         <video

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Background3D from "@/components/Background3D";
+import FloatingCursor from "@/components/FloatingCursor";
 import Hero from "@/sections/Hero";
 import About from "@/sections/About";
 import Projects from "@/sections/Projects";
@@ -19,6 +20,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden">
       {!isLoaded && <Loader onComplete={() => setIsLoaded(true)} />}
+      <FloatingCursor />
       <Background3D />
       <ClientSetup />
       <Header />
