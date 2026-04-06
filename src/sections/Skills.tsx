@@ -64,7 +64,7 @@ function MagneticTag({ children, color }: { children: React.ReactNode; color: st
     return (
         <div 
             ref={containerRef} 
-            className="skill-tag-container p-2 relative touch-none will-change-transform"
+            className="skill-tag-container p-2 relative touch-manipulation will-change-transform"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
