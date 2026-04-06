@@ -123,14 +123,14 @@ export default function About() {
             </div>
 
             {/* SEO Content Section - Keyword-rich description for search engines */}
-            <div className="container mx-auto mt-16 about-text">
-                <div className="max-w-4xl mx-auto text-center">
+            <div className="container mx-auto mt-0 about-text">
+                <div className="max-w-4xl mx-auto text-center opacity-0">
                     <p className="text-base md:text-lg text-gray-500 font-light leading-relaxed">
-                        <strong className="text-gray-400">Aaqil Khan</strong> is a <strong className="text-gray-400">Full Stack Developer</strong> based in India, 
-                        specializing in <strong className="text-gray-400">React</strong>, <strong className="text-gray-400">Next.js</strong>, <strong className="text-gray-400">Node.js</strong>, <strong className="text-gray-400">PostgreSQL</strong>, 
-                        and building scalable <strong className="text-gray-400">SaaS applications</strong>. With expertise in modern web technologies including 
-                        TypeScript, NestJS, FastAPI, and cloud platforms, Aaqil delivers high-performance, production-ready solutions 
-                        for businesses worldwide. From real-time applications to AI-powered tools, discover how cutting-edge 
+                        <strong className="text-gray-400">Aaqil Khan</strong> is a <strong className="text-gray-400">Full Stack Developer</strong> based in India,
+                        specializing in <strong className="text-gray-400">React</strong>, <strong className="text-gray-400">Next.js</strong>, <strong className="text-gray-400">Node.js</strong>, <strong className="text-gray-400">PostgreSQL</strong>,
+                        and building scalable <strong className="text-gray-400">SaaS applications</strong>. With expertise in modern web technologies including
+                        TypeScript, NestJS, FastAPI, and cloud platforms, Aaqil delivers high-performance, production-ready solutions
+                        for businesses worldwide. From real-time applications to AI-powered tools, discover how cutting-edge
                         development can transform your digital presence.
                     </p>
                 </div>
