@@ -167,8 +167,7 @@ export default function Hero({ isLoaded }: { isLoaded?: boolean }) {
           muted
           loop
           playsInline
-          preload="none"
-          poster="/profile.jpg"
+          preload="auto"
         >
           <source src="/hero_background_video.mp4" type="video/mp4" />
         </video>
