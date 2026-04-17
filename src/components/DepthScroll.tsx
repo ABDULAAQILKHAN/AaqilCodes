@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, ReactNode, Children, isValidElement, cloneElement } from "react";
+import { useRef, useEffect, ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,8 +16,8 @@ interface DepthSectionProps {
 
 export function DepthSection({ children, id, skipDepthEffect = false }: DepthSectionProps) {
     return (
-        <div 
-            className={`depth-section ${skipDepthEffect ? 'normal-scroll' : ''}`} 
+        <div
+            className={`depth-section ${skipDepthEffect ? "normal-scroll" : ""}`}
             data-section-id={id}
             data-skip-depth={skipDepthEffect}
         >
@@ -30,85 +30,101 @@ interface DepthScrollContainerProps {
     children: ReactNode;
 }
 
+// ── Transition flash helper ───────────────────────────────────
+// Called on every depth-section enter / leave to fill the brief
+// black gap while one section scales out and the next scales in.
+function flashTransition() {
+    const flash = document.getElementById("depth-transition-flash");
+    const line  = document.getElementById("depth-transition-line");
+
+    // Radial glow pulse
+    if (flash) {
+        gsap.killTweensOf(flash);
+        gsap.timeline()
+            .set(flash, { opacity: 0 })
+            .to(flash,  { opacity: 1, duration: 0.18, ease: "power2.out" })
+            .to(flash,  { opacity: 0, duration: 0.55, ease: "power2.in"  });
+    }
+
+    // Horizontal sweep line across the top edge
+    if (line) {
+        gsap.killTweensOf(line);
+        gsap.timeline()
+            .set(line,  { opacity: 0.7, scaleX: 0, transformOrigin: "left center" })
+            .to(line,   { scaleX: 1, duration: 0.45, ease: "power2.inOut" })
+            .to(line,   { opacity: 0, duration: 0.25, ease: "power2.out"  });
+    }
+}
+
 export default function DepthScrollContainer({ children }: DepthScrollContainerProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [currentSection, setCurrentSection] = useState(0);
 
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
-        const sections = container.querySelectorAll('.depth-section:not(.normal-scroll)');
-        
+        const sections = container.querySelectorAll(".depth-section:not(.normal-scroll)");
+
         const ctx = gsap.context(() => {
             sections.forEach((section, i) => {
-                // Initial state - sections after the first one start scaled down and blurred
                 if (i > 0) {
                     gsap.set(section, {
-                        scale: 0.85,
+                        scale:   0.85,
                         opacity: 0,
-                        filter: "blur(8px)",
-                        zIndex: sections.length - i,
+                        filter:  "blur(8px)",
+                        zIndex:  sections.length - i,
                     });
                 } else {
                     gsap.set(section, {
-                        scale: 1,
+                        scale:   1,
                         opacity: 1,
-                        filter: "blur(0px)",
-                        zIndex: sections.length,
+                        filter:  "blur(0px)",
+                        zIndex:  sections.length,
                     });
                 }
 
-                // Create scroll trigger for each section
                 ScrollTrigger.create({
                     trigger: section,
-                    start: "top 80%",
-                    end: "bottom 20%",
+                    start:   "top 80%",
+                    end:     "bottom 20%",
                     onEnter: () => {
-                        // Current section scales up and fades out to foreground
+                        flashTransition();
+
                         if (i > 0) {
-                            const prevSection = sections[i - 1];
-                            gsap.to(prevSection, {
-                                scale: 1.3,
-                                opacity: 0,
-                                filter: "blur(15px)",
+                            gsap.to(sections[i - 1], {
+                                scale:    1.3,
+                                opacity:  0,
+                                filter:   "blur(15px)",
                                 duration: 0.8,
-                                ease: "power2.inOut",
+                                ease:     "power2.inOut",
                             });
                         }
-                        
-                        // New section comes from background
                         gsap.to(section, {
-                            scale: 1,
-                            opacity: 1,
-                            filter: "blur(0px)",
+                            scale:    1,
+                            opacity:  1,
+                            filter:   "blur(0px)",
                             duration: 0.8,
-                            ease: "power2.inOut",
+                            ease:     "power2.inOut",
                         });
-                        
-                        setCurrentSection(i);
                     },
                     onLeaveBack: () => {
-                        // Going back up - current section goes back to background
+                        flashTransition();
+
                         gsap.to(section, {
-                            scale: 0.85,
-                            opacity: 0,
-                            filter: "blur(8px)",
+                            scale:    0.85,
+                            opacity:  0,
+                            filter:   "blur(8px)",
                             duration: 0.8,
-                            ease: "power2.inOut",
+                            ease:     "power2.inOut",
                         });
-                        
-                        // Previous section comes back from foreground
                         if (i > 0) {
-                            const prevSection = sections[i - 1];
-                            gsap.to(prevSection, {
-                                scale: 1,
-                                opacity: 1,
-                                filter: "blur(0px)",
+                            gsap.to(sections[i - 1], {
+                                scale:    1,
+                                opacity:  1,
+                                filter:   "blur(0px)",
                                 duration: 0.8,
-                                ease: "power2.inOut",
+                                ease:     "power2.inOut",
                             });
-                            setCurrentSection(i - 1);
                         }
                     },
                 });
@@ -119,38 +135,42 @@ export default function DepthScrollContainer({ children }: DepthScrollContainerP
     }, []);
 
     return (
-        <div ref={containerRef} className="depth-scroll-container relative">
-            {children}
+        <>
+            {/*
+             * ── Section-transition flash overlay ──────────────────
+             * A very subtle radial glow that briefly brightens the
+             * viewport during depth-scroll transitions, masking the
+             * black gap while sections scale in / scale out.
+             * z-index 35 = above depth sections (max ~4) but below
+             * the skills overlay (40) and the header (50).
+             */}
+            <div
+                id="depth-transition-flash"
+                className="fixed inset-0 pointer-events-none"
+                style={{
+                    zIndex:     35,
+                    opacity:    0,
+                    background: "radial-gradient(ellipse 80% 60% at 50% 45%, rgba(255,255,255,0.07) 0%, transparent 70%)",
+                }}
+            />
 
-            {/* Section indicators */}
-            <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3 hidden md:flex">
-                {Children.map(children, (child, i) => {
-                    if (!isValidElement(child)) return null;
-                    const props = child.props as DepthSectionProps;
-                    if (props.skipDepthEffect) return null;
-                    
-                    return (
-                        <button
-                            key={i}
-                            className={`group relative w-2.5 h-2.5 rounded-full transition-all duration-500 ${
-                                i === currentSection
-                                    ? "bg-white scale-150 shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-                                    : "bg-white/20 hover:bg-white/50"
-                            }`}
-                            onClick={() => {
-                                const sections = containerRef.current?.querySelectorAll('.depth-section');
-                                sections?.[i]?.scrollIntoView({ behavior: 'smooth' });
-                            }}
-                            aria-label={`Go to ${props.id}`}
-                        >
-                            <span className="absolute right-6 top-1/2 -translate-y-1/2 px-3 py-1.5 text-xs font-medium bg-black/90 text-white rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none backdrop-blur-sm border border-white/10">
-                                {props.id?.charAt(0).toUpperCase() + props.id?.slice(1)}
-                            </span>
-                        </button>
-                    );
-                })}
+            {/* Thin sweep-line that animates across the top edge on transition */}
+            <div
+                id="depth-transition-line"
+                className="fixed top-0 left-0 right-0 pointer-events-none"
+                style={{
+                    zIndex:     36,
+                    height:     "1.5px",
+                    background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 40%, rgba(255,255,255,0.5) 60%, transparent 100%)",
+                    opacity:    0,
+                    transform:  "scaleX(0)",
+                    transformOrigin: "left center",
+                }}
+            />
+
+            <div ref={containerRef} className="depth-scroll-container relative">
+                {children}
             </div>
-        </div>
+        </>
     );
 }
-

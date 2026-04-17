@@ -13,6 +13,7 @@ import Contact from "@/sections/Contact";
 import ClientSetup from "@/components/ClientSetup";
 import Loader from "@/components/Loader";
 import DepthScrollContainer, { DepthSection } from "@/components/DepthScroll";
+import SiteNavDots from "@/components/SiteNavDots";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +25,7 @@ export default function Home() {
       <Background3D />
       <ClientSetup />
       <Header />
+      <SiteNavDots />
       
       <DepthScrollContainer>
         <DepthSection id="hero">
@@ -34,7 +36,7 @@ export default function Home() {
           <About />
         </DepthSection>
         
-        <DepthSection id="skills">
+        <DepthSection id="skills" skipDepthEffect>
           <Skills />
         </DepthSection>
         

@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     image: "sol.png",
     screenshots: ["sol.png"],
     link: "https://solutions-with-aaqil.vercel.app/",
-    github: "https://github.com/aaqilkhan"
+    github: "https://github.com/ABDULAAQILKHAN/SOLUTIONS-WITH-AAQIL"
   },
   {
     id: 2,
@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     image: "zayka.png",
     screenshots: ["zayka.png"],
     link: "https://zaykadarbar.vercel.app/",
-    github: "https://github.com/aaqilkhan"
+    github: "https://github.com/ABDULAAQILKHAN/ZAYKA-RIMS"
   },
   {
     id: 3,
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
     image: "certshare.png",
     screenshots: ["certshare.png"],
     link: "https://mycerts99.vercel.app/",
-    github: "https://github.com/aaqilkhan"
+    github: "https://github.com/ABDULAAQILKHAN/My-Certs"
   },
   {
     id: 4,
@@ -100,7 +100,7 @@ export const PROJECTS: Project[] = [
     image: "stepperai.png",
     screenshots: ["stepperai.png"],
     link: "https://stepperai.vercel.app/",
-    github: "https://github.com/aaqilkhan"
+    github: "https://github.com/ABDULAAQILKHAN/Stepper.ai"
   }
 ];
 
