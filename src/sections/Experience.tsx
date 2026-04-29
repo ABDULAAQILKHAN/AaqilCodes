@@ -7,15 +7,25 @@ import { useGSAP } from "@gsap/react";
 const EXPERIENCES = [
     {
         id: 1,
+        role: "MERN Stack Developer",
+        company: "Hammoq Infotech Pvt. Ltd",
+        period: "April 2026 - Present",
+        description:
+            "Developing and shipping full-stack features for MERN-based products using React, Node.js, Express, and MongoDB. Own end-to-end workflows including REST API design, authentication (JWT), database modeling, and UI performance improvements. Collaborate with stakeholders to translate requirements into scalable components, and maintain production readiness through testing and observability.",
+        highlights: ["React + Node", "JWT Auth", "MongoDB & REST APIs"],
+        color: "from-green-500 to-emerald-500"
+    },
+    {
+        id: 2,
         role: "Software Development Engineer",
         company: "Techdome Solutions Pvt. Ltd",
-        period: "May 2024 - Present",
+        period: "May 2024 - April 2026",
         description: "Engineered modular frontend architectures and optimized backend performance, reducing latency by 25%. Architected an AI-powered recruitment tool and hardened infrastructure security.",
         highlights: ["Frontend Architecture", "25% Latency Reduction", "AI Integration"],
         color: "from-blue-500 to-cyan-500"
     },
     {
-        id: 2,
+        id: 3,
         role: "Full-Stack Developer Intern",
         company: "Blaccskull Platforms Pvt. Ltd",
         period: "March 2023 - Feb 2024",
@@ -24,7 +34,7 @@ const EXPERIENCES = [
         color: "from-purple-500 to-pink-500"
     },
     {
-        id: 3,
+        id: 4,
         role: "Full-stack Developer",
         company: "Royal IT Service",
         period: "May 2021 - Feb 2023",
