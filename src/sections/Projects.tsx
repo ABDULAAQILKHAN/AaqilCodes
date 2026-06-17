@@ -6,45 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-
-const PROJECTS = [
-    {
-        id: 1,
-        slug: "solutions-with-aaqil",
-        title: "Solutions with Aaqil",
-        category: "Next.js, Tailwind, Framer motion, Email.js",
-        description: "My personal B2B portfolio with Auth control of my own projects.",
-        image: "sol.png",
-        link: "https://solutions-with-aaqil.vercel.app/"
-    },
-    {
-        id: 2,
-        slug: "zayka-darbar",
-        title: "Zayka-Darbar",
-        category: "Next.js, Supabase, NestJS",
-        description: "Multi-role food ordering platform with real-time tracking.",
-        image: "zayka.png",
-        link: "https://zaykadarbar.vercel.app/"
-    },
-    {
-        id: 3,
-        slug: "mycerts",
-        title: "MyCerts",
-        category: "Next.js, NestJS, PostgreSQL",
-        description: "Secure digital credential hub for verifiable certificates.",
-        image: "certshare.png",
-        link: "https://mycerts99.vercel.app/"
-    },
-    {
-        id: 4,
-        slug: "stepper-ai",
-        title: "Stepper.ai",
-        category: "Next.js, FastAPI, Supabase",
-        description: "AI chatbot to debug code step by step.",
-        image: "stepperai.png",
-        link: "https://stepperai.vercel.app/"
-    },
-];
+import { PROJECTS } from "@/data/projects";
 
 export default function Projects() {
     const container = useRef<HTMLDivElement>(null);
@@ -102,6 +64,11 @@ export default function Projects() {
                             className="project-card flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-full flex flex-col group cursor-pointer block"
                         >
                             <div className="relative w-full h-full bg-neutral-900 rounded-xl overflow-hidden mb-6">
+                                {project.openSource && (
+                                    <span className="absolute top-4 left-4 z-10 px-3 py-1 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-emerald-500/90 text-black rounded-full shadow-lg shadow-emerald-500/30">
+                                        Open Source
+                                    </span>
+                                )}
                                 {project.image && !project.image.startsWith('bg-') ? (
                                     <Image
                                         src={`/${project.image}`}
@@ -120,7 +87,14 @@ export default function Projects() {
 
                             <div className="flex items-start justify-between">
                                 <div>
-                                    <p className="text-xs uppercase tracking-widest text-gray-400 mb-2">{project.category}</p>
+                                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                                        <p className="text-xs uppercase tracking-widest text-gray-400">{project.category}</p>
+                                        {project.openSource && (
+                                            <span className="md:hidden px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full">
+                                                Open Source
+                                            </span>
+                                        )}
+                                    </div>
                                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-2 group-hover:text-gray-300 transition-colors">
                                         {project.title}
                                     </h3>

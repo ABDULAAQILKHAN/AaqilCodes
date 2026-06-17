@@ -12,9 +12,47 @@ export interface Project {
   screenshots: string[];
   link: string;
   github?: string;
+  openSource?: boolean;
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: 5,
+    slug: "auth-pro",
+    title: "Auth-Pro",
+    category: "NestJS, Prisma, PostgreSQL, Cloudflare R2",
+    description:
+      "Self-hosted auth, email & storage microservice — your own DB, SMTP, and R2 bucket with no vendor lock-in.",
+    longDescription:
+      "Auth-Pro is a production-ready authentication, email, and storage microservice built with NestJS, Prisma, and PostgreSQL. It offers a self-hosted alternative to Supabase's auth, email, and storage layers — use your own Neon database, SMTP provider, and Cloudflare R2 bucket with full ownership of every layer.",
+    problemSolved:
+      "Teams building modern web apps often rely on bundled auth/email/storage platforms that create vendor lock-in, unpredictable pricing at scale, and limited control over infrastructure. Auth-Pro solves this by giving developers a modular, self-hosted foundation with JWT auth, transactional email, and media storage they fully own.",
+    techStack: [
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "JWT",
+      "Cloudflare R2",
+      "sharp",
+      "nodemailer",
+      "helmet",
+      "Jest",
+    ],
+    features: [
+      "JWT authentication with signup, login, and protected routes",
+      "Password reset and email verification flows",
+      "Avatar and image uploads to Cloudflare R2 with WebP compression",
+      "Three-tier rate limiting and HTTP security headers",
+      "130+ unit and E2E tests with mocked external services",
+      "Built-in Swagger UI and interactive API documentation",
+    ],
+    image: "bg-gradient-to-br from-emerald-600/50 via-neutral-900 to-cyan-600/40",
+    screenshots: [],
+    link: "https://abdulaaqilkhan.github.io/AUTH-PRO/",
+    github: "https://github.com/ABDULAAQILKHAN/AUTH-PRO",
+    openSource: true,
+  },
   {
     id: 1,
     slug: "solutions-with-aaqil",

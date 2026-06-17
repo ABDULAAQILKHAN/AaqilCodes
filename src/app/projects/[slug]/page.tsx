@@ -27,6 +27,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
+  const ogImage = project.image.startsWith("bg-")
+    ? undefined
+    : {
+        url: `/${project.image}`,
+        width: 1200,
+        height: 630,
+        alt: `${project.title} - Project Screenshot`,
+      };
+
   return {
     title: `${project.title} | Project by Aaqil Khan`,
     description: project.longDescription,
@@ -36,27 +45,21 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       ...project.techStack,
       "Full stack project",
       "Web application",
+      ...(project.openSource ? ["Open source"] : []),
     ],
     openGraph: {
       title: `${project.title} | Project by Aaqil Khan`,
       description: project.longDescription,
       url: `https://aaqilcodes.vercel.app/projects/${project.slug}`,
       siteName: "Aaqil Codes",
-      images: [
-        {
-          url: `/${project.image}`,
-          width: 1200,
-          height: 630,
-          alt: `${project.title} - Project Screenshot`,
-        },
-      ],
+      ...(ogImage ? { images: [ogImage] } : {}),
       type: "article",
     },
     twitter: {
-      card: "summary_large_image",
+      card: ogImage ? "summary_large_image" : "summary",
       title: `${project.title} | Project by Aaqil Khan`,
       description: project.longDescription,
-      images: [`/${project.image}`],
+      ...(ogImage ? { images: [ogImage.url] } : {}),
     },
   };
 }
@@ -135,9 +138,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <section className="pt-24 pb-12 px-6">
           <div className="container mx-auto max-w-6xl">
             <div className="mb-8">
-              <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">
-                {project.category}
-              </p>
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <p className="text-sm uppercase tracking-widest text-gray-400">
+                  {project.category}
+                </p>
+                {project.openSource && (
+                  <span className="px-3 py-1 text-xs font-bold tracking-[0.2em] uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 rounded-full">
+                    Open Source
+                  </span>
+                )}
+              </div>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
                 {project.title}
               </h1>
@@ -148,14 +158,23 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Main Image */}
             <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-neutral-900 mb-12">
-              <Image
-                src={`/${project.image}`}
-                alt={`${project.title} - Main Screenshot`}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-              />
+              {project.image.startsWith("bg-") ? (
+                <div className={`absolute inset-0 ${project.image}`} />
+              ) : (
+                <Image
+                  src={`/${project.image}`}
+                  alt={`${project.title} - Main Screenshot`}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                />
+              )}
+              {project.openSource && (
+                <div className="absolute top-6 left-6 px-4 py-2 text-xs font-bold tracking-[0.25em] uppercase bg-emerald-500 text-black rounded-full shadow-lg shadow-emerald-500/30">
+                  Open Source
+                </div>
+              )}
             </div>
           </div>
         </section>
