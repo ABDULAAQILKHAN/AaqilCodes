@@ -100,8 +100,8 @@ export default function About() {
     );
 
     return (
-        <section ref={container} id="about" className="relative min-h-screen w-full flex flex-col items-center p-6 md:p-12 lg:p-24 bg-transparent">
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <section ref={container} id="about" className="relative min-h-screen w-full flex flex-col items-center px-6 py-6 md:px-12 md:py-10 lg:px-24 lg:py-16 bg-transparent">
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
                 {/* Text Column */}
                 <div className="flex flex-col gap-8 order-2 lg:order-1">
                     <h2 className="about-text text-4xl md:text-6xl font-bold tracking-tight text-white drop-shadow-md will-change-transform">
@@ -122,9 +122,9 @@ export default function About() {
                 </div>
             </div>
 
-            {/* SEO Content Section - Keyword-rich description for search engines */}
-            <div className="container mx-auto mt-0 about-text">
-                <div className="max-w-4xl mx-auto text-center opacity-0">
+            {/* SEO Content Section - hidden visually, minimal layout impact */}
+            <div className="sr-only about-text">
+                <div className="max-w-4xl mx-auto text-center">
                     <p className="text-base md:text-lg text-gray-500 font-light leading-relaxed">
                         <strong className="text-gray-400">Aaqil Khan</strong> is a <strong className="text-gray-400">Full Stack Developer</strong> based in India,
                         specializing in <strong className="text-gray-400">React</strong>, <strong className="text-gray-400">Next.js</strong>, <strong className="text-gray-400">Node.js</strong>, <strong className="text-gray-400">PostgreSQL</strong>,

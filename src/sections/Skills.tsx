@@ -350,8 +350,10 @@ export default function Skills() {
             let snapTimer: ReturnType<typeof setTimeout>;
             let isSnapping = false;
 
-            // Fade zone: first / last 180 px of the section's scroll travel
-            const FADE_PX = 180;
+            // Fade zone at entry/exit:
+            // keep it short so the first skills panel appears quickly,
+            // especially on mobile where long fade windows feel like blank space.
+            const FADE_PX = window.innerWidth < 768 ? 64 : 110;
 
             // ── Per-frame tick (runs every rAF via GSAP ticker) ──
             const tick = () => {
