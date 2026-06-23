@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
       "130+ unit and E2E tests with mocked external services",
       "Built-in Swagger UI and interactive API documentation",
     ],
-    image: "bg-gradient-to-br from-emerald-600/50 via-neutral-900 to-cyan-600/40",
+    image: "auth-pro.png",
     screenshots: [],
     link: "https://abdulaaqilkhan.github.io/AUTH-PRO/",
     github: "https://github.com/ABDULAAQILKHAN/AUTH-PRO",
